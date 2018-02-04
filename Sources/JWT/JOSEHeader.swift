@@ -9,7 +9,7 @@
 import Foundation
 
 
-struct JOSEHeader: Codable {
+public struct JOSEHeader: Codable {
   /// The "alg" (algorithm) identifies the cryptographic algorithm used to secure the JWS
   var algorithm: String?
 
@@ -43,7 +43,7 @@ struct JOSEHeader: Codable {
   /// The "crit" (critical) indicates that extensions to JWS, JWE and/or [JWA] are being used that MUST be understood and processed
   // TODO
 
-  init(from decoder: Decoder) throws {
+  public init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: CodingKeys.self)
     algorithm = try container.decodeIfPresent(String.self, forKey: .algorithm)
     keyID = try container.decodeIfPresent(String.self, forKey: .keyID)
@@ -51,7 +51,7 @@ struct JOSEHeader: Codable {
     contentType = try container.decodeIfPresent(String.self, forKey: .contentType)
   }
 
-  func encode(to encoder: Encoder) throws {
+  public func encode(to encoder: Encoder) throws {
     var container = encoder.container(keyedBy: CodingKeys.self)
     try container.encodeIfPresent(algorithm, forKey: .algorithm)
     try container.encodeIfPresent(keyID, forKey: .keyID)
