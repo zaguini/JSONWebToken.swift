@@ -11,7 +11,7 @@ import Foundation
 
 public struct JOSEHeader: Codable {
   /// The "alg" (algorithm) identifies the cryptographic algorithm used to secure the JWS
-  var algorithm: String?
+  public var algorithm: String?
 
   /// jwu
   // TODO
@@ -20,7 +20,7 @@ public struct JOSEHeader: Codable {
   // TODO
 
   /// The "kid" (key ID) is a hint indicating which key was used to secure the JWS
-  var keyID: String?
+  public var keyID: String?
 
   /// x5u
   // TODO
@@ -35,10 +35,10 @@ public struct JOSEHeader: Codable {
   // TODO
 
   /// The "typ" (type) is used by JWS applications to declare the media type [IANA.MediaTypes] of this complete JWS
-  var type: String?
+  public var type: String?
 
   /// The "cty" (content type) is used by JWS application to declare the media type [IANA.MediaTypes] of the secured content (the payload).
-  var contentType: String?
+  public var contentType: String?
 
   /// The "crit" (critical) indicates that extensions to JWS, JWE and/or [JWA] are being used that MUST be understood and processed
   // TODO
