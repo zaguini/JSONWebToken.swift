@@ -1,14 +1,14 @@
 import Foundation
 
-func parseTimeInterval(_ value: Any?) -> Date? {
+func parseTimeInterval(_ value: Any?) -> Int? {
   guard let value = value else { return nil }
 
   if let string = value as? String, let interval = TimeInterval(string) {
-    return Date(timeIntervalSince1970: interval)
+    return Int(Date(timeIntervalSince1970: interval).timeIntervalSince1970) * 1000
   }
 
   if let interval = value as? TimeInterval {
-    return Date(timeIntervalSince1970: interval)
+    return Int(Date(timeIntervalSince1970: interval).timeIntervalSince1970) * 1000
   }
 
   return nil
@@ -60,7 +60,7 @@ extension ClaimSet {
     }
   }
 
-  public var expiration: Date? {
+  public var expiration: Int? {
     get {
       return parseTimeInterval(claims["exp"])
     }
@@ -70,7 +70,7 @@ extension ClaimSet {
     }
   }
 
-  public var notBefore: Date? {
+  public var notBefore: Int? {
     get {
       return parseTimeInterval(claims["nbf"])
     }
@@ -80,7 +80,7 @@ extension ClaimSet {
     }
   }
 
-  public var issuedAt: Date? {
+  public var issuedAt: Int? {
     get {
       return parseTimeInterval(claims["iat"])
     }
@@ -171,7 +171,7 @@ public class ClaimSetBuilder {
     }
   }
 
-  public var expiration: Date? {
+  public var expiration: Int? {
     get {
       return claims.expiration
     }
@@ -181,7 +181,7 @@ public class ClaimSetBuilder {
     }
   }
 
-  public var notBefore: Date? {
+  public var notBefore: Int? {
     get {
       return claims.notBefore
     }
@@ -191,7 +191,7 @@ public class ClaimSetBuilder {
     }
   }
 
-  public var issuedAt: Date? {
+  public var issuedAt: Int? {
     get {
       return claims.issuedAt
     }
